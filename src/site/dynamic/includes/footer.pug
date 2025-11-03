@@ -1,0 +1,104 @@
+style.
+    /* base colors - ajusta se quiser */
+    :root{
+        --bg-footer: #0f1720;     /* fundo escuro */
+        --muted: #98a0a6;
+        --accent: #18c7d4;        /* ciano */
+        --accent-2: #ff5e6d;      /* anel vermelho/pink */
+    }
+
+    /* footer */
+    .site-footer { background: var(--bg-footer); color: #cbd5e1; border-top: 1px solid rgba(255,255,255,0.03); border-radius: 12px 12px 0 0; box-shadow: 0 -16px 40px rgba(2,6,23,0.7); }
+    .site-footer .footer-title { color: #fff; font-weight: 600; margin-bottom: .6rem; }
+    .site-footer .footer-links a { color: var(--muted); text-decoration: none; display: block; padding: 3px 0; }
+    .site-footer .footer-links a:hover { color: #fff; text-decoration: underline; }
+
+    /* icons */
+    .footer-icon { opacity: .9; vertical-align: middle; color: var(--muted); }
+    .socials a { color: var(--muted); }
+    .socials a:hover { color: var(--accent); transform: translateY(-2px); transition: .15s; }
+
+        /* CTA */
+        .cta-title { color: #fff; font-weight: 700; }
+        .btn-accent { background: linear-gradient(90deg, var(--accent) 0%, #12b3c3 100%); color: #081018; border: none; padding: .6rem 1.1rem; border-radius: 10px; box-shadow: 0 6px 18px rgba(24,199,212,0.08);}
+        .btn-accent:hover { filter: brightness(.95); color: #fff; }
+
+    /* small screens */
+    @media (max-width: 767px) {
+        .site-footer { border-radius: 0; }
+        .btn-accent { width: 100%; }
+        .text-md-end { text-align: start !important; }
+    }
+
+    /* hr custom */
+    .site-footer hr { border-color: rgba(255,255,255,0.03); }
+    .text-accent { color: var(--accent) !important; }
+    .link-light { color: var(--muted); }
+    .link-light:hover { color: #fff; }
+
+footer.site-footer.bg-dark-900.text-light.mt-5
+    .container.py-5
+        .row.gy-4
+            // column links
+            .col-6.col-md-3
+                h6.footer-title Miyako
+                ul.footer-links.list-unstyled.mb-0
+                    li
+                        a.link-light(href='/') P&aacute;gina Inicial
+                    li
+                        a.link-light(href='/invite') Me Adicione
+                    li
+                        a.link-light(href='/dashboard') Painel de Controle
+                    li
+                        a.link-light(href='/suporte') Suporte
+                    li
+                        a.link-light(href='/comandos') Comandos
+            // column bot info
+            .col-6.col-md-3
+                h6.footer-title Sobre a Miyako
+                p.small.mb-1
+                    | Companheira no Discord &mdash; ajudo a gerir servidores, adicionar divers&atilde;o e organiza&ccedil;&atilde;o.
+                .socials.mt-2
+                    // small inline SVG icons
+                    a.me-2(href='https://github.com/felpzsouls' aria-label='GitHub' title='GitHub')
+                        svg.footer-icon(width='20' height='20' viewbox='0 0 24 24' fill='currentColor')
+                            path(d='M12 .5C5.73.5.75 5.48.75 11.75c0 4.96 3.22 9.16 7.69 10.64.56.1.77-.24.77-.54 0-.27-.01-1.17-.02-2.12-3.13.68-3.79-1.51-3.79-1.51-.51-1.3-1.24-1.65-1.24-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1.01 1.73 2.64 1.23 3.28.94.1-.74.39-1.23.71-1.51-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.24 1.17-3.03-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.16 1.16a11 11 0 0 1 5.75 0c2.2-1.47 3.16-1.16 3.16-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.8 1.17 3.03 0 4.32-2.64 5.28-5.15 5.56.4.35.76 1.03.76 2.08 0 1.5-.01 2.71-.01 3.08 0 .3.2.65.78.54C20 20.91 23.25 16.71 23.25 11.75 23.25 5.48 18.27.5 12 .5z')
+                    a.me-2(href='https://x.com/Felpzsouls__' aria-label='X / Twitter' title='X / Twitter')
+                        svg.footer-icon(width='20' height='20' viewbox='0 0 24 24' fill='currentColor')
+                            path(d='M22 5.92c-.66.29-1.38.49-2.13.58.77-.46 1.36-1.19 1.64-2.06-.72.42-1.52.73-2.37.9C18.6 4.2 17.57 3.75 16.43 3.75c-1.94 0-3.52 1.62-3.52 3.62 0 .28.03.56.09.82-2.92-.15-5.52-1.58-7.26-3.76-.3.5-.47 1.08-.47 1.7 0 1.17.6 2.2 1.51 2.8-.56-.02-1.09-.17-1.55-.42v.04c0 1.72 1.18 3.15 2.75 3.48-.29.08-.6.12-.92.12-.22 0-.43-.02-.64-.06.43 1.34 1.66 2.32 3.12 2.35-1.14.9-2.57 1.44-4.13 1.44-.27 0-.54-.01-.8-.05 1.48.97 3.24 1.52 5.13 1.52 6.15 0 9.52-5.1 9.52-9.52v-.43c.66-.48 1.23-1.08 1.68-1.77-.61.27-1.26.46-1.94.55.7-.42 1.24-1.07 1.49-1.86z')
+                    a(href='/suporte' aria-label='Discord' title='Discord')
+                        svg.footer-icon(xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16")
+                            path(d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612")
+            // column resources
+            .col-6.col-md-3
+                h6.footer-title Recursos
+                ul.footer-links.list-unstyled.mb-0
+                    li
+                        a.link-light(href='/terms') Termos de Servi&ccedil;o
+                    li
+                        a.link-light(href='/terms') Pol&iacute;tica de Privacidade
+                    li
+                        a.link-light(href='/blog') Blog
+            // column extras / partners
+            .col-6.col-md-3
+                h6.footer-title Al&eacute;m da Miyako
+                ul.footer-links.list-unstyled.mb-0
+                    li
+                        a.link-light(href='https://twitch.tv/Felpzsouls') Felpzsouls
+                    li
+                        a.link-light(href='/partners') Parceiros
+                    li
+                        a.link-light(href='/merch') Merch
+        // CTA row
+        .row.mt-4.align-items-center
+            .col-md-9
+                h5.mb-1.cta-title Vamos transformar o seu servidor em um lugar incr&iacute;vel, juntos.
+                p.mb-0.small.text-light
+                    | Junte-se a mais servidores e adicione a Miyako &mdash; o bot com ferramentas para deixar tudo organizado e divertido.
+            .col-md-3.text-md-end.mt-3.mt-md-0
+                a.btn.btn-lg.btn-accent(href='/invite') + Me adicione
+        hr.mt-4
+        .row
+            .col-12.text-center.small.text-light
+                | &copy; 2025 &mdash; Miyako&trade; | Feito por 
+                a.text-accent(href='https://twitch.tv/Felpzsouls') Felpzsouls

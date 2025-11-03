@@ -1,0 +1,31 @@
+doctype html
+html(lang="pt-br")
+  head
+    include includes/js.pug
+    include includes/head.pug
+    title !{bot.user.username} || Dashboard
+  body 
+    include includes/navbar.pug
+
+    .container-lg.mt-5.p-4.rounded.shadow(style="background: linear-gradient(145deg, #1f1f1f, #292929); color: #fff;")
+      .row.g-4
+        // COLUNA DO PERFIL
+        .col-12.col-md-3.border-end.border-info
+          .d-flex.flex-column.align-items-center
+            img.img-thumbnail.rounded-circle.border.border-info.shadow(style="width: 120px; height: 120px" src=avatar)
+            h2.text-center.mt-3 !{user.username}
+          .nav.flex-column.mt-4.w-100
+            a.nav-link.text-info.fw-semibold(href="/dashboard")
+              i.fas.fa-server.me-2
+              | Servidores
+
+        // COLUNA DOS SERVIDORES
+        .col-12.col-md-9
+          .text-center.mb-3
+            h3.text-info
+              i.fas.fa-cogs.me-2
+              | Servidores disponíveis
+          .container-fluid
+            .row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-4
+              | !{servers}
+    include includes/footer.pug

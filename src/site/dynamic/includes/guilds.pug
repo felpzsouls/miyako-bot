@@ -1,0 +1,7 @@
+if(guild)
+    if(guild.icon)
+        - let format = guild.icon.startsWith('a_') ? 'gif' : 'png';
+        - let url = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.${format}?size=2048`;
+        - guildIcon = url
+    else 
+        - guildIcon = `https://loritta.website/assets/img/unknown.png`

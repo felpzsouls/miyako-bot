@@ -1,0 +1,74 @@
+.discord-embed {
+    background: #2f3136;
+    border-radius: 8px;
+    color: #dcddde;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.discord-embed .accent {
+    width: 6px;
+    border-radius: 4px;
+    background: #4f545c;
+    flex-shrink: 0;
+}
+
+/* Modais em tema escuro para combinar com a página */
+.modal .modal-content {
+    background-color: #2f3136;
+    color: #dcddde;
+    border: 0;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+}
+
+/* Cabeçalho / corpo / footer dos modais */
+.modal .modal-header,
+.modal .modal-body,
+.modal .modal-footer {
+    color: #dcddde;
+    border-color: rgba(255,255,255,0.03);
+}
+
+/* Campos do formulário dentro do modal */
+.modal .form-control {
+    background-color: #202225;
+    color: #dcddde;
+    border: 1px solid #3a3c40;
+}
+.modal .form-control:focus {
+    background-color: #202225;
+    color: #dcddde;
+    border-color: #5865f2;
+    box-shadow: none;
+}
+.modal .form-control::placeholder {
+    color: #9aa0a6;
+}
+
+/* Labels e checkboxes */
+.modal .form-label,
+.modal .form-check-label {
+    color: #dcddde;
+}
+
+/* Botão de fechar visível em tema escuro */
+.modal .btn-close {
+    filter: invert(1) brightness(1.1);
+    opacity: 0.9;
+}
+.modal .btn-close:hover { opacity: 1; }
+
+/* Botões dentro do modal (opcional) */
+.modal .btn-primary {
+    background-color: #5865f2;
+    border-color: transparent;
+}
+
+/* Backdrop suave */
+.modal-backdrop.show {
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(1px);
+}

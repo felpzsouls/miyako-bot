@@ -1,0 +1,144 @@
+doctype html
+html(lang="pt-br")
+    head
+        include includes/js.pug
+        include includes/head.pug
+        title Embed Builder
+
+        link(rel="stylesheet" href="/css/embed-builder.css")
+    body 
+        include includes/navbar.pug
+
+        .container.my-5
+            .card.shadow-lg.border-0.rounded-4.bg-dark.text-light
+                .card-header
+                    h3 Embed Builder
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#authorModal") Adicionar Autor 
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#titleModal") Adicionar Titulo
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#descriptionModal") Adicionar Descrição
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#fieldModal") Adicionar Campo
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#imageModal") Adicionar Imagem
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#thumbnailModal") Adicionar Miniatura
+                    button.btn.btn-primary(type="button" data-bs-toggle="modal" data-bs-target="#footerModal") Adicionar Rodapé
+                    input.form-control.form-control-color#embedColor(type="color" value="#4f545c" title="Cor da barra")
+                .card-body
+                    .row
+                        .col-md-6
+                            h5 Preview
+                            #embed-builder
+                                // aqui o embed será renderizado dinamicamente
+                        .col-md-6
+                            h5 JSON
+                            textarea.form-control#embedJson(rows="15" readonly)
+                            .mt-2
+                                button.btn.btn-outline-light#copyJson Copiar JSON
+
+        // Modais
+        .modal.fade#authorModal(tabindex="-1" aria-labelledby="authorModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h5.modal-title#authorModalLabel Adicionar Autor
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body
+                        form#authorForm
+                            .mb-3
+                                label.form-label(for="authorName") Nome do Autor
+                                input.form-control(type="text" id="authorName" required)
+                            .mb-3
+                                label.form-label(for="authorIcon") URL do Ícone do Autor
+                                input.form-control(type="text" id="authorIcon")
+                            button.btn.btn-primary(type="submit") Adicionar Autor
+
+        .modal.fade#titleModal(tabindex="-1" aria-labelledby="titleModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h5.modal-title#titleModalLabel Adicionar Título
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body
+                        form#titleForm
+                            .mb-3
+                                label.form-label(for="titleText") Título
+                                input.form-control(type="text" id="titleText" required)
+                            .mb-3
+                                label.form-label(for="titleUrl") URL (opcional)
+                                input.form-control(type="text" id="titleUrl")
+                            button.btn.btn-primary(type="submit") Adicionar Título
+
+        .modal.fade#descriptionModal(tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h5.modal-title#descriptionModalLabel Adicionar Descrição
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body
+                        form#descriptionForm
+                            .mb-3
+                                label.form-label(for="descriptionText") Descrição
+                                textarea.form-control(id="descriptionText" rows="4")
+                            button.btn.btn-primary(type="submit") Adicionar Descrição
+
+        .modal.fade#fieldModal(tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h5.modal-title#fieldModalLabel Adicionar Campo
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body
+                        form#fieldForm
+                            .mb-3
+                                label.form-label(for="fieldName") Nome do Campo
+                                input.form-control(type="text" id="fieldName" required)
+                            .mb-3
+                                label.form-label(for="fieldValue") Valor do Campo
+                                textarea.form-control(id="fieldValue" rows="3")
+                            .form-check
+                                input.form-check-input(type="checkbox" id="fieldInline")
+                                label.form-check-label(for="fieldInline") Inline
+                            button.btn.btn-primary(type="submit") Adicionar Campo
+
+        .modal.fade#imageModal(tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h5.modal-title#imageModalLabel Adicionar Imagem
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body
+                        form#imageForm
+                            .mb-3
+                                label.form-label(for="imageUrl") URL da Imagem
+                                input.form-control(type="text" id="imageUrl")
+                            button.btn.btn-primary(type="submit") Adicionar Imagem
+
+        .modal.fade#thumbnailModal(tabindex="-1" aria-labelledby="thumbnailModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h5.modal-title#thumbnailModalLabel Adicionar Miniatura
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body
+                        form#thumbnailForm
+                            .mb-3
+                                label.form-label(for="thumbnailUrl") URL da Miniatura
+                                input.form-control(type="text" id="thumbnailUrl")
+                            button.btn.btn-primary(type="submit") Adicionar Miniatura
+
+        .modal.fade#footerModal(tabindex="-1" aria-labelledby="footerModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h5.modal-title#footerModalLabel Adicionar Rodapé
+                        button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                    .modal-body
+                        form#footerForm
+                            .mb-3
+                                label.form-label(for="footerText") Texto do Rodapé
+                                input.form-control(type="text" id="footerText")
+                            .mb-3
+                                label.form-label(for="footerIcon") URL do Ícone do Rodapé
+                                input.form-control(type="text" id="footerIcon")
+                            button.btn.btn-primary(type="submit") Adicionar Rodapé
+
+        include includes/footer.pug
+        script(src="/js/embed-builder.js")

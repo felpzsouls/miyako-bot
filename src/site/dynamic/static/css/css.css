@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+  }
+  
+  body {
+    background-color: #323232
+  }
+
+  /* não forçar branco em todas as .card (quebra o tema escuro) */
+  .card {
+    background-color: transparent;
+  }
+
+  /* cards com classe bg-dark devem ter fundo escuro explícito */
+  .card.bg-dark {
+    background-color: #2f3136;
+    color: #dcddde;
+  }
+
+  /* garantia: form-groups e selects dentro de cards escuros ficam escuros */
+  .card.bg-dark .form-group,
+  .card.bg-dark .form-control,
+  .card.bg-dark .form-select,
+  .card.bg-dark select.form-control {
+    background-color: transparent;
+    color: #dcddde;
+  }
+  .card.bg-dark select.form-control option,
+  .card.bg-dark .form-select option {
+    background-color: #2f3136;
+    color: #dcddde;
+  }
+
+  .bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+}  
+
+  .text-truncate-custom {
+    width: 200px; /* Defina a largura desejada */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(to right, #1b1f23, #2b3036);
+}
+
+.navbar-brand span {
+  font-size: 1.3rem;
+}
+
+.navbar .nav-link {
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+  color: #00bcd4 !important;
+  transform: translateY(-1px);
+}
+
+.dropdown-menu-dark {
+  background-color: #2a2f34;
+  border-color: #17a2b8;
+}
+
+body {
+  background-color: #121212;
+  color: #fff;
+}
+
+.nav-link.active, .nav-link:hover {
+  background-color: #17a2b8 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  transition: 0.2s ease-in-out;
+}
+
+.img-thumbnail {
+  background-color: #1e1e1e;
+}
+
+.shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+h2, h3 {
+  font-weight: 600;
+}
+
+.row-cols-8 > * {
+  flex: 0 0 auto;
+  width: 12.5%;
+}
+
+/* Dropdown escuro */
+.choices__list--dropdown {
+  background-color: #2f3136 !important; /* fundo estilo Discord */
+  border: 1px solid #202225;
+}
+
+/* Texto normal */
+.choices__list--dropdown .choices__item {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+/* Hover (quando passa o mouse) */
+.choices__list--dropdown .choices__item--highlight {
+  background-color: #5865F2 !important; /* azul Discord */
+  color: #fff !important;
+}
+
+/* Itens selecionados (tags dentro do input) */
+.choices__inner .choices__item {
+  background-color: #5865F2 !important;
+  color: #fff !important;
+  border-radius: 4px;
+  padding: 3px 6px;
+}
+
+
+/* Selects e opções em tema escuro (quando dentro de cards bg-dark) */
+.card.bg-dark select.form-control,
+.card.bg-dark .form-control,
+.card.bg-dark .form-select {
+    background-color: #202225;
+    color: #dcddde;
+    border: 1px solid #3a3c40;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Opções do select (dropdown) */
+.card.bg-dark select.form-control option,
+.card.bg-dark .form-select option {
+    background-color: #2f3136;
+    color: #dcddde;
+}
+
+/* Tornar o caret visível (simples) */
+.card.bg-dark select.form-control {
+    background-image: linear-gradient(45deg, transparent 50%, #9aa0a6 50%),
+                      linear-gradient(135deg, #9aa0a6 50%, transparent 50%),
+                      linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.0));
+    background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px), 100% 0;
+    background-size: 6px 6px, 6px 6px, 1px 1.5em;
+    background-repeat: no-repeat;
+    padding-right: 2.5rem;
+}
+
+/* Se estiver usando Choices.js, ajuste a aparência do componente */
+.card.bg-dark .choices__inner {
+    background-color: #202225;
+    color: #dcddde;
+    border-color: #3a3c40;
+}
+.card.bg-dark .choices__list--dropdown .choices__item {
+    background-color: #2f3136;
+    color: #dcddde;
+}
+
+/* Forçar tema escuro no Choices.js (elementos gerados dinamicamente) */
+.card.bg-dark .choices__inner,
+.card.bg-dark .choices__inner .choices__input,
+.card.bg-dark .choices__inner .choices__placeholder,
+.card.bg-dark .choices__inner .choices__list,
+.card.bg-dark .choices__inner .choices__list--single .choices__item,
+.card.bg-dark .choices__list--dropdown .choices__item,
+.card.bg-dark .choices__inner .choices__input > input {
+    background-color: #202225 !important;
+    color: #dcddde !important;
+    border-color: #3a3c40 !important;
+}
+
+/* input de busca dentro do Choices */
+.card.bg-dark .choices__input > input {
+    background: transparent !important;
+    color: #dcddde !important;
+}
+
+/* placeholder e texto do dropdown */
+.card.bg-dark .choices__placeholder,
+.card.bg-dark .choices__list--dropdown .choices__item {
+    color: #9aa0a6 !important;
+    background-color: #2f3136 !important;
+}
+
+/* caret/box do componente */
+.card.bg-dark .choices__inner {
+    box-shadow: none;
+}
+
+/* garantir selects normais também */
+.card.bg-dark select.form-control,
+.card.bg-dark .form-select {
+    background-color: #202225 !important;
+    color: #dcddde !important;
+}

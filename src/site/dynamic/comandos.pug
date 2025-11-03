@@ -1,0 +1,30 @@
+doctype html
+html(lang="pt-br")
+    head
+        include includes/head.pug
+        include includes/js.pug
+        title !{bot.user.username} || Comandos
+    body 
+        include includes/navbar.pug
+
+        .container.my-5
+            .card.shadow-lg.border-0.rounded-4.bg-dark.text-light
+                .card-body.p-3
+                    h3.fw-bold.mb-3.text-info 📜 Comandos do Bot
+                    p.text-light.small.mb-3 Abaixo está uma lista dos comandos disponíveis para interagir com o bot !{bot.user.username}.
+
+                    each group in categories
+                        .mt-3
+                            h6.text-info.mb-2 #{group.category}
+                            ul.list-unstyled.mb-0
+                                each command in group.commands
+                                    li.d-flex.align-items-center.py-1.border-bottom.border-secondary
+                                        .d-flex.align-items-center.me-2.flex-shrink-0
+                                            span.badge.bg-secondary.text-light.px-2.py-1.small #{command.name}
+                                            if command.usage
+                                                small.text-light.ms-2.ms-sm-3.text-nowrap.small(title=command.usage) #{command.usage}
+                                        if command.description
+                                            small.text-light.flex-fill.ms-3.small(style="max-width:70%; display:inline-block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title=command.description) #{command.description}
+                                        else
+                                            small.text-muted.flex-fill.ms-3.small Sem descrição
+        include includes/footer.pug

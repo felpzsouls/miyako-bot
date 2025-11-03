@@ -1,0 +1,48 @@
+nav.navbar.navbar-expand-lg.shadow.bg-gradient-dark.border-bottom.border-info.py-2
+  .container-fluid
+    a.navbar-brand.d-flex.align-items-center(href="/")
+      img.rounded-circle.border.border-info(src=client.avatarURL() width="40" height="40")
+      span.text-info.fw-bold.ms-2 #{client.username}
+    
+    button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent")
+      span.navbar-toggler-icon
+
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.text-light(href="/")
+            i.fas.fa-home.me-1
+            | Início
+        li.nav-item
+          a.nav-link.text-light(href="https://discord.com/oauth2/authorize?client_id=1198236092516802701&permissions=8&scope=bot%20applications.commands")
+            i.fas.fa-plus-circle.me-1
+            | Me adicione
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle.text-light(href="#" role="button" data-bs-toggle="dropdown")
+            i.fas.fa-info-circle.me-1
+            | Importante
+          ul.dropdown-menu.dropdown-menu-dark.border-info
+            li
+              a.dropdown-item(href="/suporte" target="_blank")
+                i.fas.fa-headset.me-2
+                | Suporte
+            li
+              a.dropdown-item(href="/terms")
+                i.fas.fa-file-alt.me-2
+                | Termos de uso
+            li
+              hr.dropdown-divider
+            li
+              a.dropdown-item(href="https://twitch.tv/felpzsouls" target="_blank")
+                i.fab.fa-twitch.me-2
+                | Meu criador
+
+      if (!user)
+        a.btn.btn-outline-info.ms-auto(href="/auth/discord")
+          i.fab.fa-discord.me-2
+          | Login
+      else
+        a.nav-link.ms-auto(href="/dashboard")
+          .d-flex.align-items-center
+            img.img-thumbnail.rounded-circle.border.border-info(src=avatar style="width: 40px; height: 40px")
+            span.text-light.fw-bold.ms-2 !{user.username}

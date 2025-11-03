@@ -1,0 +1,52 @@
+doctype html
+html(lang="pt-br")
+  head
+    //- Includes
+    include includes/js.pug
+    include includes/guilds.pug
+    include includes/head.pug
+    title !{bot.user.username} || Auto Role
+
+    //- CSS do Choices
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css")
+
+  body
+    include includes/navbar.pug
+    
+    .container.my-5
+      .card.shadow-lg.border-0.rounded-4.bg-dark.text-light
+        .row.g-0
+
+          //- Lado esquerdo (logo e título)
+          .col-md-4.d-flex.flex-column.align-items-center.justify-content-center.p-4.border-end.border-secondary
+            img(src=guildIcon width="150" height="150").rounded-circle.border.mb-3
+            h4.fw-bold.text-light !{guild.name}
+            a.text-info.mt-2.text-decoration-none(href=`/guilds/${guild.id}`) ⚙️ Configurações Gerais
+            a.text-info.mt-2.text-decoration-none(href=`/guilds/${guild.id}/welcomer`) 🚪 Mensagens de entrar/sair
+            a.text-info.mt-2.text-decoration-none(href=`/guilds/${guild.id}/autorole`) 🎭 Cargos automáticos
+
+          //- Lado direito (formulário)
+          .col-md-8.p-5
+            h3.fw-bold.mb-4.text-info 🎭 Cargos automáticos
+            p.text-light Defina um cargo que será atribuído automaticamente aos novos membros que entrarem no servidor.
+            form#guildForm
+              .form-check.form-switch.my-4
+                input.form-check-input(type="checkbox" id="toggleAutorole" checked=(guildData && guildData.autorole && guildData.autorole.active))
+                label.form-check-label.text-light(for="toggleAutorole") Ativar Auto Role
+
+              .form-group.mb-4
+                label.form-label.text-light(for='autoroleRole') Cargo que será atribuído automaticamente
+                select#autoroleRole.form-control.bg-secondary.text-light(name="autoroleRole")
+                  option(value="") Selecione um cargo
+                  each role in guildRoles
+                    option(
+                      value=`${role.id}`
+                      selected=(guildData && guildData.autorole && guildData.autorole.roleId === role.id)
+                    ) #{role.name}
+
+              button.btn.btn-success.btn-lg.rounded-pill.px-4(type="submit") 💾 Salvar
+            
+    include includes/footer.pug
+    //- Scripts
+    script(src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js")
+    script(src="/js/autorole.js")

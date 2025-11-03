@@ -1,0 +1,100 @@
+doctype html
+html(lang="pt-br")
+  head
+    //- Includes
+    include includes/js.pug
+    include includes/guilds.pug
+    include includes/head.pug
+    
+    title !{bot.user.username} || Welcomer
+
+    //- CSS do Choices
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css")
+
+  body
+    include includes/navbar.pug
+
+    .container.my-5
+      .card.shadow-lg.border-0.rounded-4.bg-dark.text-light
+        .row.g-0
+
+          //- Lado esquerdo (logo e título)
+          .col-md-4.d-flex.flex-column.align-items-center.justify-content-center.p-4.border-end.border-secondary
+            img(src=guildIcon width="150" height="150").rounded-circle.border.mb-3
+            h4.fw-bold.text-light !{guild.name}
+            a.text-info.mt-2.text-decoration-none(href=`/guilds/${guild.id}`) ⚙️ Configurações Gerais
+            a.text-info.mt-2.text-decoration-none(href=`/guilds/${guild.id}/welcomer`) 🚪 Mensagens de entrar/sair
+            a.text-info.mt-2.text-decoration-none(href=`/guilds/${guild.id}/autorole`) 🎭 Cargos automáticos
+
+          //- Lado direito (formulário)
+          .col-md-8.p-5
+            h3.fw-bold.mb-4.text-info 🚪 Mensagens de entrar/sair
+            form#guildForm
+              .form-check.form-switch.my-4
+                input.form-check-input(type="checkbox" id="toggleWelcome" checked=(guildData && guildData.welcome && guildData.welcome.active))
+                label.form-check-label.text-light(for="toggleWelcome") Ativar mensagem de boas-vindas
+
+              .form-group.mb-4
+                label.form-label.text-light(for="welcomeChannel") Canal de boas-vindas
+                select#welcomeChannel.form-control.bg-secondary.text-light(name="welcomeChannel")
+                  option(value="") Selecione um canal
+                  each channel in guildChannels
+                    if channel.type === 0
+                      option(
+                        value=`${channel.id}`
+                        selected=(guildData && guildData.welcome && guildData.welcome.channel === channel.id)
+                      ) #{channel.name}
+                label.form-label.text-light(for='welcomeMessage') Mensagem de boas-vindas
+                textarea#welcomeMessage.form-control.bg-secondary.text-light.border-0.rounded-3(name="welcomeMessage" rows="3") #{(guildData && guildData.welcome && guildData.welcome.message) || 'Bem-vindo ao servidor, {user}!'}
+                button.btn.btn-outline-info(id="testWelcomeMessage") 💬 Mensagem de teste
+
+              .form-check.form-switch.my-4
+                input.form-check-input(type="checkbox" id="toggleGoodbye" checked=(guildData && guildData.goodbye && guildData.goodbye.active))
+                label.form-check-label.text-light(for="toggleGoodbye") Ativar mensagem de despedida
+                
+
+              .form-group.mb-4
+                label.form-label.text-light(for="goodbyeChannel") Canal de despedida
+                select#goodbyeChannel.form-control.bg-secondary.text-light(name="goodbyeChannel")
+                  option(value="") Selecione um canal
+                  each channel in guildChannels
+                    if channel.type === 0
+                      option(
+                        value=`${channel.id}`
+                        selected=(guildData && guildData.goodbye && guildData.goodbye.channel === channel.id)
+                      ) #{channel.name}
+                label.form-label.text-light(for='goodbyeMessage') Mensagem de despedida
+                textarea#goodbyeMessage.form-control.bg-secondary.text-light.border-0.rounded-3(name="goodbyeMessage" rows="3") #{(guildData && guildData.goodbye && guildData.goodbye.message) || 'Adeus, {user}!'}
+                button.btn.btn-outline-info(id="testGoodbyeMessage") 💬 Mensagem de teste
+              .mt-3
+                a.btn.btn-outline-info.btn-sm.mt-3(href="/embed-builder") 📝 Embed Builder
+
+              button.btn.btn-primary.mt-4(type="submit") 💾 Salvar Configurações
+
+              // dropdown com informações sobre os placeholders
+              .mt-4
+                .dropdown 
+                  button.btn.btn-primary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") Placeholders Disponíveis
+                  ul.dropdown-menu
+                    li
+                      a.dropdown-item(href="#") {@user} - Menciona o usuário que provocou a ação 
+                    li
+                      a.dropdown-item(href="#") {user} - Mostra o nome do usuário que provocou a ação
+                    li
+                      a.dropdown-item(href='#') {user.id} - Mostra o ID do usuário que provocou a ação
+                    li
+                      a.dropdown-item(href=`#`) {user.avatar} - Mostra a URL do avatar do usuário que provocou a ação
+                    li
+                      a.dropdown-item(href=`#`) {user.nickname} - Mostra o apelido do usuário que provocou a ação
+                    li 
+                      a.dropdown-item(href=`#`) {guild} - Mostra o nome do servidor
+                    li
+                      a.dropdown-item(href=`#`) {guild.id} - Mostra o ID do servidor
+                    li
+                      a.dropdown-item(href=`#`) {guild.size} - Mostra o número de membros do servidor
+                    li
+                      a.dropdown-item(href=`#`) {guild.icon} - Mostra a URL do ícone do servidor
+    include includes/footer.pug
+    //- Scripts
+    script(src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js")
+    script(src="/js/welcomer.js")

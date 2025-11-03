@@ -1,0 +1,47 @@
+doctype html
+html(lang="pt-br")
+  head
+    include includes/js.pug
+    include includes/head.pug
+    title !{bot.user.username} || Início
+
+  body
+    include includes/navbar.pug
+
+    .container.mt-5
+      .card.shadow-lg.border-0.rounded-4.bg-dark.text-light
+        .row.g-0
+          .col-md-4.d-flex.flex-column.align-items-center.justify-content-center.p-4.border-end.border-secondary
+            img(src=icon width="180" height="180").rounded-circle.border.border-3.border-danger.shadow-sm
+            h3.mt-3.text-center.text-info !{bot.user.username}
+            small.text-muted.text-center.mt-2 Bot de gerenciamento e diversão
+
+          .col-md-8.p-5
+            h2.fw-bold.text-light.mb-3 👋 Olá, seja bem-vindo!
+            p.fs-5.text-light
+              | Eu sou o !{bot.user.username}, seu novo companheiro no Discord! Posso ajudar a 
+              b gerenciar
+              |  seu servidor, adicionar 
+              b diversão
+              | , e tornar tudo mais 
+              b organizado
+              | . Me adicione e veja o que posso fazer!
+
+            .mt-4
+              .d-flex.flex-wrap.gap-3
+                a.btn.btn-lg.btn-danger.rounded-pill.d-flex.align-items-center.gap-2(href="https://discord.com/oauth2/authorize?client_id=1198236092516802701&permissions=8&scope=bot%20applications.commands")
+                  i.bi.bi-plus-circle-fill
+                  | Me Adicione
+                a.btn.btn-lg.btn-outline-info.rounded-pill.d-flex.align-items-center.gap-2(href="/dashboard")
+                  i.bi.bi-sliders
+                  | Painel de Controle
+                a.btn.btn-lg.btn-outline-light.rounded-pill.d-flex.align-items-center.gap-2(href="/comandos")
+                  i.bi.bi-terminal
+                  | Ver Comandos
+                a.btn.btn-lg.btn-outline-secondary.rounded-pill.d-flex.align-items-center.gap-2(href="/suporte" target="_blank")
+                  i.bi.bi-discord
+                  | Suporte
+
+      .text-center.mt-5.text-muted
+        small &copy; 2025 - !{bot.user.username} | Feito por Felpzsouls
+    include includes/footer.pug
