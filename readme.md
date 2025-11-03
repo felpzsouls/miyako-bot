@@ -15,6 +15,7 @@ Possui dashboard web, comandos de moderação, economia, e integração com Top.
 ---
 
 ## 📦 Estrutura do projeto
+```
 src/
 ├── bot/
 │ ├── cmds/ # Comandos do bot
@@ -27,7 +28,7 @@ src/
 │ └── views (.pug) # Páginas do painel
 ├── app.js # Inicialização do painel
 └── index.js # Inicialização do bot
-
+```
 
 ---
 
